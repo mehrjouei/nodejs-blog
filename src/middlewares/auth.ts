@@ -11,7 +11,7 @@ export const authenticateToken = (
   const token = authHeader && authHeader.split(" ")[1];
 
   if (!token) {
-    return res.sendStatus(401); // Unauthorized
+    return res.sendStatus(401);
   }
   const secretToken = process.env.SECRET_TOKEN || "secretKey";
   jwt.verify(token, secretToken, (err, user) => {
