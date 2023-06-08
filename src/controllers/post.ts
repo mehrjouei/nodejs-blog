@@ -32,6 +32,11 @@ export const addPost = async (req: AuthRequest, res: Response) => {
   return res.json(newPost);
 };
 
+export const removePost = async (req: AuthRequest, res: Response) => {
+  const post = await Post.findByIdAndRemove(req.user.id);
+  return res.json(post);
+};
+
 export const editPost = async (req: AuthRequest, res: Response) => {
   const { title, content } = req.body;
   const post = await Post.findById(req.params.id);
